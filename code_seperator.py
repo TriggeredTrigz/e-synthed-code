@@ -4,14 +4,21 @@ import code_gen_with_groq as cg
 from dotenv import load_dotenv
 import postgres
 
-def write_code_to_files(content, project_dir=None):
+def write_code_to_files(content, base_dir=None, project_dir=None):
     # Check if there is a #project_name: tag in the content
     match = re.search(r"#project_name:\s*([^\n\r]+)", content)
     extracted_project_name = match.group(1).strip() if match else None
     
-    # Use the extracted project name if project_dir is not explicitly provided
-    # Fallback to current directory "."
-    final_project_dir = project_dir or extracted_project_name or "."
+    # If project_dir is explicitly provided (e.g., during an update), use it.
+    if project_dir is not None:
+        final_project_dir = project_dir
+    else:
+        # Construct it using the AI-generated name and the user's base_dir
+        ai_name = extracted_project_name or "generated_project"
+        if base_dir and base_dir != ".":
+            final_project_dir = os.path.join(base_dir, ai_name)
+        else:
+            final_project_dir = extracted_project_name or "."
 
     if final_project_dir != ".":
         os.makedirs(final_project_dir, exist_ok=True)

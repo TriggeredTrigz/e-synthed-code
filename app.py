@@ -63,6 +63,27 @@ class CodeGeneratorApp:
         )
         self.prompt_entry.pack(pady=(0, 10), padx=20, fill="x")
 
+        # Custom Output Directory label
+        dir_label = tk.Label(
+            self.root,
+            text="Custom Output Directory (optional):",
+            font=("Consolas", 12),
+            bg=self.bg_color,
+            fg=self.fg_color,
+        )
+        dir_label.pack(pady=(5, 5), padx=20, anchor="w")
+
+        # Custom Output Directory text area
+        self.dir_entry = tk.Entry(
+            self.root,
+            font=("Consolas", 11),
+            bg=self.input_bg,
+            fg=self.fg_color,
+            insertbackground=self.fg_color,
+            relief="flat",
+        )
+        self.dir_entry.pack(pady=(0, 15), padx=20, fill="x", ipady=5)
+
         # Generate button
         self.generate_btn = tk.Button(
             self.root,
@@ -183,7 +204,11 @@ class CodeGeneratorApp:
 
         try:
             generated_code = cg.generate_code_with_groq(prompt)
-            self.project_name = cs.write_code_to_files(generated_code)
+            custom_dir = self.dir_entry.get().strip()
+            self.project_name = cs.write_code_to_files(
+                generated_code, 
+                base_dir=custom_dir if custom_dir else None
+            )
             postgres.push_data_to_postgres(1, prompt, generated_code)
 
             self.output_text.delete("1.0", "end")
