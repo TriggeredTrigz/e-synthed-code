@@ -12,5 +12,6 @@ RUN pip install --no-cache-dir -r requirement.txt
 COPY . .
 
 ENV PYTHONUNBUFFERED=1
+ENV GROQ_API_KEY=""
 
-CMD ["python", "runner.py"]
+CMD ["python", "app.py"]

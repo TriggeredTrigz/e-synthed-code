@@ -30,7 +30,7 @@ This will display the app with all available options.
 
 ## Configuration
 The tool requires a GROQ API key from their website in a .env file in the same directory. \
-Example .env file is included.
+Example .env file is included. If using Docker Compose, the `GROQ_API_KEY` inside the `.env` file will automatically be passed into the container as an environment variable.
 
 ## Contributing
 Contributions are welcome! To contribute:

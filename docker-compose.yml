@@ -30,6 +30,7 @@ services:
       - DB_USER=adnan
       - DB_PASSWORD=123
       - DISPLAY=${DISPLAY}
+      - GROQ_API_KEY=${GROQ_API_KEY}
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
     depends_on:
