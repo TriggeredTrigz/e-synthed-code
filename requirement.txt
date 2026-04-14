@@ -1,0 +1,11 @@
+groq
+psycopg2-binary
+python-dotenv
+requests
+pandas
+numpy
+python-magic
+pathlib
+pytest
+black
+flake8
