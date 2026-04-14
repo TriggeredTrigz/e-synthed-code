@@ -223,12 +223,19 @@ class CodeGeneratorApp:
         update_prompt = self.update_entry.get("1.0", "end-1c").strip()
         prev_code = self.prev_code_entry.get("1.0", "end-1c").strip()
 
+        # Auto copy-paste from Generated Code if the user left it empty
+        if not prev_code:
+            prev_code = self.output_text.get("1.0", "end-1c").strip()
+            if prev_code:
+                self.prev_code_entry.delete("1.0", "end")
+                self.prev_code_entry.insert("1.0", prev_code)
+
         if not update_prompt:
             self.set_status("Please enter an update prompt!", "error")
             return
 
         if not prev_code:
-            self.set_status("Please enter previous code to update!", "error")
+            self.set_status("Please generate code first or paste previous code!", "error")
             return
 
         self.set_status("Updating code...", "normal")
