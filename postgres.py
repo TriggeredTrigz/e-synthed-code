@@ -1,15 +1,16 @@
 import psycopg2
 import sqlite3
+import os
 
 # Connect to PostgreSQL
 def connect_to_postgres():
     try:
         conn = psycopg2.connect(
-            dbname="meme",
-            user="adnan",
-            password="123",
-            host="localhost",
-            port=5432
+            dbname=os.environ.get("POSTGRES_DB", "postgres"),
+            user=os.environ.get("POSTGRES_USER", "postgres"),
+            password=os.environ.get("POSTGRES_PASSWORD", "postgres"),
+            host=os.environ.get("POSTGRES_HOST", "localhost"),
+            port=os.environ.get("POSTGRES_PORT", "5432")
         )
         cursor = conn.cursor()
         return conn, cursor

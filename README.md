@@ -39,9 +39,19 @@ To use the tool, , follow these steps:
 
 This will display the app with all available options.
 
+## Database (Optional)
+By default, the application smoothly falls back to a local SQLite database (`local_fallback.db`) to store prompts when a PostgreSQL server isn't running. However, if you would prefer to use a PostgreSQL database, a separate Docker Compose file is provided to quickly spin one up:
+
+```bash
+docker compose -f docker-compose.postgres.yml up -d
+```
+This will natively start a PostgreSQL container on default port `5432` and initialize it so the Python app will seamlessly connect to it. 
+
+It uses standard defaults (user: `postgres`, password: `postgres`, db: `postgres`). You can easily customize these defaults by filling out the `POSTGRES_` variables in your `.env` file (see `.env.example`). Ensure Docker is running before executing the command.
+
 ## Configuration
 The tool requires a GROQ API key from their website in a .env file in the same directory. \
-Example .env file is included. If using Docker Compose, the `GROQ_API_KEY` inside the `.env` file will automatically be passed into the container as an environment variable.
+Example .env file is included.
 
 ## Contributing
 Contributions are welcome! To contribute:
