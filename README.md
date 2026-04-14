@@ -1,50 +1,38 @@
 # e-synthed-code
 
-## Terminal-Based Tool
-
-### Overview
+## Overview
 This tool is designed to simplify and automate tasks directly from the terminal. It provides a user-friendly interface and powerful features to enhance productivity and streamline workflows.
 
-### Features
-- **Feature 1**: Describe the first key feature of the tool.
-- **Feature 2**: Highlight another important functionality.
-- **Feature 3**: Mention any additional capabilities.
-
-### Installation
+## Installation
 To install the tool, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/adnanwaasi/mcpwidows.git
+   git clone https://github.com/TriggeredTrigz/e-synthed-code.git
    ```
 2. Navigate to the tool's directory:
    ```bash
-   cd mcpwidows/utils
+   cd e-synthed-code
    ```
-3. Install dependencies (if applicable):
+3. Install dependencies:
    ```bash
    pip install -r requirement.txt
    ```
 
-### Usage
+## Usage
 To use the tool, run the following command:
 
 ```bash
-python runner.py [options]
+python app.py
 ```
 
-#### Example
-```bash
-python runner.py --help
-```
-This will display the help menu with all available options.
+This will display the app with all available options.
 
-### Configuration
-If the tool requires configuration, provide details here. For example:
-- Edit the `config.json` file to set up your preferences.
-- Specify environment variables if needed.
+## Configuration
+The tool requires a GROQ API key from their website in a .env file in the same directory. \
+Example .env file is included.
 
-### Contributing
+## Contributing
 Contributions are welcome! To contribute:
 1. Fork the repository.
 2. Create a new branch:
@@ -61,8 +49,5 @@ Contributions are welcome! To contribute:
    ```
 5. Open a pull request.
 
-### License
-This project is licensed under the [MIT License](LICENSE).
-
-### Support
+## Support
 If you encounter any issues, feel free to open an issue in the repository or contact the maintainer.
