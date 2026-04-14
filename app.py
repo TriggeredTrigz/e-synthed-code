@@ -159,14 +159,14 @@ class CodeGeneratorApp:
         self.update_btn.pack(pady=(0, 10), padx=20, fill="x")
 
         # Output label
-        output_label = tk.Label(
+        self.output_label = tk.Label(
             self.root,
             text="Generated Code:",
             font=("Consolas", 12),
             bg=self.bg_color,
             fg=self.fg_color,
         )
-        output_label.pack(pady=(10, 5), padx=20, anchor="w")
+        self.output_label.pack(pady=(10, 5), padx=20, anchor="w")
 
         # Output text area (read-only)
         self.output_text = scrolledtext.ScrolledText(
@@ -196,10 +196,11 @@ class CodeGeneratorApp:
         prompt = self.prompt_entry.get("1.0", "end-1c").strip()
 
         if not prompt:
-            self.set_status("Please enter a prompt!", "error")
+            self.set_status("Please enter a prompt.", "error")
             return
 
         self.set_status("Generating code...", "normal")
+        self.output_label.config(text="Generating...")
         self.root.update()
 
         try:
@@ -213,9 +214,11 @@ class CodeGeneratorApp:
 
             self.output_text.delete("1.0", "end")
             self.output_text.insert("1.0", generated_code)
+            self.output_label.config(text="Generated Code:")
             self.set_status("Code generated successfully!", "success")
 
         except Exception as e:
+            self.output_label.config(text="Generated Code:")
             self.set_status(f"Error: {str(e)}", "error")
             messagebox.showerror("Error", str(e))
 
@@ -231,14 +234,15 @@ class CodeGeneratorApp:
                 self.prev_code_entry.insert("1.0", prev_code)
 
         if not update_prompt:
-            self.set_status("Please enter an update prompt!", "error")
+            self.set_status("Please enter an update prompt.", "error")
             return
 
         if not prev_code:
-            self.set_status("Please generate code first or paste previous code!", "error")
+            self.set_status("Please generate code first or paste previous code.", "error")
             return
 
         self.set_status("Updating code...", "normal")
+        self.output_label.config(text="Updating code...")
         self.root.update()
 
         try:
@@ -248,9 +252,11 @@ class CodeGeneratorApp:
 
             self.output_text.delete("1.0", "end")
             self.output_text.insert("1.0", updated_code)
+            self.output_label.config(text="Updated code:")
             self.set_status("Code updated successfully!", "success")
 
         except Exception as e:
+            self.output_label.config(text="Generated Code:")
             self.set_status(f"Error: {str(e)}", "error")
             messagebox.showerror("Error", str(e))
 
