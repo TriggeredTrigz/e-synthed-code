@@ -3,8 +3,8 @@
 ## Overview
 This tool is designed to simplify and automate tasks directly from the terminal. It provides a user-friendly interface and powerful features to enhance productivity and streamline workflows.
 
-## Installation
-To install the tool, follow these steps:
+## Installation and usage
+To use the tool, , follow these steps:
 
 1. Clone the repository:
    ```bash
@@ -14,17 +14,28 @@ To install the tool, follow these steps:
    ```bash
    cd e-synthed-code
    ```
-3. Install dependencies:
+3. Create a virtual python environment and activate it:
    ```bash
-   pip install -r requirement.txt
+   python -m venv .venv
+   ```
+   
+   For Windows,
+   ```bash
+   .venv/Scripts/activate
    ```
 
-## Usage
-To use the tool, run the following command:
-
-```bash
-python app.py
-```
+   For Linux and Mac,
+   ```bash
+   source .venv/bin/activate
+   ```
+4. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+5. Finally, run the following command:
+   ```bash
+   python app.py
+   ```
 
 This will display the app with all available options.
 
